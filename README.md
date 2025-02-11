@@ -37,3 +37,4 @@ https://www.figma.com/design/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project%3A-Spots?no
 This webpage is deployed to GitHub Pages.
 
 - Deployment Link: https://ufarooqui1.github.io/se_project_spots/
+- Video Recording of the project: https://drive.google.com/file/d/1H-u-O_GuBClbGoaL8TyRAKgp_ERHXT1H/view?usp=sharing
