@@ -50,6 +50,7 @@
 .profile__edit-btn {
   margin-top: auto;
   font-size: 16px;
+  font-weight: 500;
   line-height: 1;
   color: #212121;
   padding: 0;
@@ -76,6 +77,7 @@
   height: 52px;
   border-radius: 8px;
   margin-top: 140px;
+  border: none;
 }
 
 .profile__add-btn:hover {
