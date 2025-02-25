@@ -46,6 +46,10 @@
 
 .modal__input {
   padding: 16px 12px;
+  border-radius: 10px;
+}
+.modal__input {
+  cursor: pointer;
 }
 
 .modal__submit-btn {
