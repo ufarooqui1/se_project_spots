@@ -46,7 +46,9 @@
 
 .modal__input {
   padding: 16px 12px;
-  border-radius: 10px;
+  border-radius: 8px;
+  border-color: #212121;
+  opacity: 0.4;
 }
 .modal__input {
   cursor: pointer;
@@ -83,6 +85,7 @@
 
 .modal__close-btn:hover {
   cursor: pointer;
+  opacity: 1;
 }
 
 @media screen and (max-width: 629px) {
