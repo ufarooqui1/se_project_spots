@@ -95,8 +95,7 @@
 
   .modal__container {
     padding: 12px;
-    max-height: 336px;
-    overflow-y: auto;
+    max-width: 336px;
   }
 
   .modal__title {
