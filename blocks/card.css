@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  min-width: 250px;
+  width: 100%;
+  max-width: 413px;
   margin-bottom: 24px;
 }
 
@@ -16,15 +17,22 @@
   white-space: nowrap;
   overflow: hidden;
   margin: 0;
+  top: 425px;
   color: #212121;
 }
 
 .card__image {
-  height: 413px;
   width: 100%;
+  height: 288px;
   object-fit: cover;
-  display: block;
   border-radius: 8px;
+  aspect-ratio: 413/445;
+}
+
+.card__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .card__footer {
@@ -35,12 +43,13 @@
 }
 
 .card__delete-btn {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   position: absolute;
   background: url("../images/delete.svg") center no-repeat;
   border: none;
-  right: 10px;
+  top: 18px;
+  right: 15px;
   background-size: contain;
 }
 
@@ -81,17 +90,32 @@
 }
 
 @media screen and (max-width: 627px) {
+  .card {
+    max-width: 288px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
   .card__image {
-    height: 288px;
+    aspect-ratio: 288/310;
+    width: 100%;
+    object-fit: cover;
   }
 
   .card__title {
-    max-width: 250px;
+    width: 100%;
+    height: 18px;
+    justify-content: space-between;
     font-size: 16px;
   }
 
   .card__like-btn {
     width: 20px;
     height: 18px;
+  }
+
+  .card__delete-btn {
+    top: 15px;
+    right: 15px;
   }
 }

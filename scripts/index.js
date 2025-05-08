@@ -138,7 +138,10 @@ addFormElement.addEventListener("submit", function (evt) {
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
 
-  addModal.classList.remove("modal_opened");
+  addModalNameInput.value = "";
+  addModalDescriptionInput.value = "";
+
+  closeModal(addModal);
 });
 
 initialCards.forEach(function (item) {
