@@ -86,7 +86,6 @@
 
   border: none;
   position: absolute;
-  top: 32px;
   right: 50px;
   transition: 0.3s;
 
@@ -186,10 +185,10 @@
   /*Placed below the 480px media query to avoid being overwritten*/
   .modal__close-btn_type_preview {
     top: -40px;
-    right: 0;
+    right: 10;
   }
 
   .modal__image {
-    max-width: unset;
+    max-width: 288px;
   }
 }
