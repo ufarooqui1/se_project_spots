@@ -69,6 +69,10 @@
   letter-spacing: 0%;
 }
 
+.modal__error_visible {
+  display: block;
+}
+
 .modal__submit-btn {
   width: 156px;
   height: 52px;

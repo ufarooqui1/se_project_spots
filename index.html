@@ -37,8 +37,8 @@
         </section>
         <template id="card-template">
           <li class="card">
-            <button class="card__delete-btn" type="button"></button>
             <img class="card__image" src="#" alt="New post" />
+            <button class="card__delete-btn" type="button"></button>
             <div class="card__footer">
               <h2 class="card__title"></h2>
               <button
@@ -74,8 +74,8 @@
                 type="text"
                 class="modal__input"
                 placeholder="Type your name"
-                min="2"
-                max="40"
+                minlength="2"
+                maxlength="40"
                 required
               />
               <span id="profile-name-input-error" class="modal__error"></span>
