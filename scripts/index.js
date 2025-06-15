@@ -1,33 +1,5 @@
-const initialCards = [
-  {
-    name: "Golden Gate Bridge",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
-  },
-  {
-    name: "Val Thorens",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
-  },
-  {
-    name: "Restaurant terrace",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg",
-  },
-  {
-    name: "An outdoor cafe",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg",
-  },
-  {
-    name: "A very long bridge, over the forest and through the trees",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg",
-  },
-  {
-    name: "Tunnel with morning light",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg",
-  },
-  {
-    name: "Mountain house",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
-  },
-];
+import { initialCards } from "./cards.js";
+import { settings, resetValidation } from "./validation.js";
 
 // DOM elements
 const profileEditButton = document.querySelector(".profile__edit-btn");
@@ -64,40 +36,29 @@ const cardTemplate = document
 const cardsList = document.querySelector(".cards__list");
 
 // Modal logic
+function handleEsc(event) {
+  const openedModal = document.querySelector(".modal.modal_opened");
+  if (event.key === "Escape" && openedModal) {
+    closeModal(openedModal);
+  }
+}
+
+function handleOverlayClick(event) {
+  if (event.target.classList.contains("modal_opened")) {
+    closeModal(event.target);
+  }
+}
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
-
-  function handleEsc(event) {
-    if (event.key === "Escape") {
-      closeModal(modal);
-    }
-  }
-
-  function handleOverlayClick(event) {
-    if (event.target === modal) {
-      closeModal(modal);
-    }
-  }
-
-  modal._handleEsc = handleEsc;
-  modal._handleOverlayClick = handleOverlayClick;
-
   document.addEventListener("keydown", handleEsc);
   modal.addEventListener("click", handleOverlayClick);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-
-  if (modal._handleEsc) {
-    document.removeEventListener("keydown", modal._handleEsc);
-    delete modal._handleEsc;
-  }
-
-  if (modal._handleOverlayClick) {
-    modal.removeEventListener("click", modal._handleOverlayClick);
-    delete modal._handleOverlayClick;
-  }
+  document.removeEventListener("keydown", handleEsc);
+  modal.removeEventListener("click", handleOverlayClick);
 }
 
 // Card logic
@@ -130,11 +91,18 @@ function getCardElement(data) {
   return cardElement;
 }
 
+// Universal render function
+function renderCard(cardData, method = "append") {
+  const cardElement = getCardElement(cardData);
+  if (method === "prepend") {
+    cardsList.prepend(cardElement);
+  } else {
+    cardsList.append(cardElement);
+  }
+}
+
 // Initial card rendering
-initialCards.forEach(function (item) {
-  const cardElement = getCardElement(item);
-  cardsList.append(cardElement);
-});
+initialCards.forEach((item) => renderCard(item, "append"));
 
 // Open edit modal
 profileEditButton.addEventListener("click", () => {
@@ -172,8 +140,7 @@ addFormElement.addEventListener("submit", function (evt) {
     link: addModalLinkInput.value,
   };
 
-  const cardElement = getCardElement(inputValues);
-  cardsList.prepend(cardElement);
+  renderCard(inputValues, "prepend");
 
   addFormElement.reset();
   closeModal(addModal);
