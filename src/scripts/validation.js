@@ -82,11 +82,9 @@ const setEventListeners = (formElement, config) => {
   toggleButtonState(inputList, buttonElement, config);
 };
 
-const enableValidation = (config) => {
+export const enableValidation = (config) => {
   const formList = document.querySelectorAll(config.formSelector);
   formList.forEach((formElement) => {
     setEventListeners(formElement, config);
   });
 };
-
-enableValidation(settings);
