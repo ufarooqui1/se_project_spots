@@ -1,0 +1,39 @@
+@import "../vendor/normalize.css";
+@import "../vendor/font.css";
+@import "../blocks/page.css";
+@import "../blocks/content.css";
+@import "../blocks/profile.css";
+@import "../blocks/card.css";
+@import "../blocks/cards.css";
+@import "../blocks/footer.css";
+@import "../blocks/modal.css";
+
+@font-face {
+  font-family: "ubuntu-regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/Ubuntu-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "ubuntu-bold";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/Ubuntu-Bold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "ubuntu-Italic";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/Ubuntu-Italic.ttf) format("truetype");
+}
+
+.page {
+  font-family: "ubuntu-regular";
+  font-size: 16px;
+}
+
+.page__subtitle {
+  font-style: italic;
+}

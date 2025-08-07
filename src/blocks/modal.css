@@ -32,17 +32,51 @@
   box-sizing: border-box;
   position: relative;
   border-radius: 10px;
+  text-align: center;
 }
+
+.modal__container-delete {
+  background: #fff;
+  width: 630px;
+  height: 172px;
+  position: absolute;
+  top: 325px;
+  left: 405px;
+  padding-top: 32px 20px;
+  gap: 32px;
+  border-radius: 8px;
+  opacity: 1;
+}
+
 .modal__title {
   margin: 0;
   font-weight: 500;
   font-size: 32px;
   line-height: 1;
   color: #212121;
+  text-align: left;
+}
+
+.modal__title-delete {
+  width: 590px;
+  height: 24px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #212121;
+  text-align: center;
 }
 
 .modal__form {
   margin-top: 32px;
+  text-align: left;
+}
+
+.modal__buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
 }
 
 .modal__label {
@@ -51,6 +85,7 @@
   gap: 8px;
   margin-bottom: 32px;
   color: rgba(33, 33, 33, 0.7);
+  text-align: left;
 }
 
 .modal__input {
@@ -83,11 +118,38 @@
   color: #fff;
   font-weight: 500;
   font-size: 16px;
-  line-height: 16px;
+  line-height: 1.2;
 }
 
-.modal__submit-btn:hover {
+.modal__delete-btn {
+  width: 156px;
+  height: 52px;
+  border-radius: 8px;
+  padding: 18px 32px;
+  gap: 8px;
+  background-color: #ff6565;
+  color: black;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+  border: none;
+}
+
+.modal__cancel-btn {
+  width: 156px;
+  height: 52px;
+  border-radius: 8px;
+  padding: 18px 32px;
+  background-color: white;
+  gap: 8px;
+  border: 1px solid #212121;
+}
+
+.modal__delete-btn:hover,
+.modal__submit-btn:hover,
+.modal__cancel-btn:hover {
   cursor: pointer;
+  opacity: 0.9;
 }
 
 .modal__submit-btn_disabled {
@@ -122,6 +184,15 @@
   background-image: url(../images/close-preview.svg);
   top: 0;
   right: -52.5px;
+  position: absolute;
+  border-width: 2px;
+  opacity: 1;
+}
+
+.modal__close-btn_type_delete {
+  background-image: url(../images/close-preview.svg);
+  top: 0;
+  right: -40px;
   position: absolute;
   border-width: 2px;
   opacity: 1;
@@ -162,13 +233,12 @@
   padding: 4px 8px;
   border-radius: 8px;
   width: auto;
-  height: 19px;
   margin: 8px 0 0 0;
   position: relative;
   display: inline-block;
   left: 0;
   font-family: Poppins;
-  line-height: 120%;
+  line-height: 1.2;
   letter-spacing: 0%;
 }
 
@@ -179,6 +249,41 @@
 
   .modal__container {
     padding: 22px 12px 12px;
+  }
+
+  .modal__container-delete {
+    width: 300px;
+    height: 208px;
+    top: 214px;
+    left: 10px;
+    border-radius: 8px;
+    padding: 12px;
+    gap: 20px;
+    background-color: #ffffff;
+  }
+
+  .modal__title-delete {
+    width: 276px;
+    height: 48px;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    justify-content: center;
+    color: #212121;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .modal__container-delete {
+    width: 300px;
+    height: 208px;
+    top: 214px;
+    left: 10px;
+    gap: 20px;
+    opacity: 1;
+    border-radius: 8px;
+    padding: 12px;
   }
 
   .modal__caption {
@@ -201,17 +306,50 @@
   .modal__submit-btn {
     width: 100%;
     max-width: none;
+    align-self: flex-start;
   }
+
+  .modal__buttons-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .modal__delete-btn,
+  .modal__cancel-btn {
+    width: 156px;
+    height: 52px;
+    border-radius: 8px;
+    padding: 18px 32px;
+    align-self: center;
+  }
+}
+
+.modal__close-btn_type_delete {
+  top: auto;
 }
 
 @media screen and (max-width: 627px) {
   /*Placed below the 480px media query to avoid being overwritten*/
   .modal__close-btn_type_preview {
     top: -40px;
-    right: 10;
+    right: 10px;
   }
 
   .modal__image {
     max-width: 288px;
+  }
+
+  .modal__delete-btn,
+  .modal__cancel-btn {
+    width: 156px;
+    height: 52px;
+    padding-top: 18px;
+    padding-right: 32px;
+    padding-bottom: 18px;
+    padding-left: 32px;
+    gap: 8px;
+    opacity: 1;
+    border-radius: 8px;
+    border-width: 1px;
   }
 }
