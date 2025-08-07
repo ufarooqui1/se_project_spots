@@ -3,6 +3,7 @@ import {
   settings,
   resetValidation,
   enableValidation,
+  disableButton,
 } from "../scripts/validation.js";
 import { setButtonText } from "../utils/helpers.js";
 import Api from "../utils/Api.js";
@@ -35,6 +36,7 @@ const profileEditButton = document.querySelector(".profile__edit-btn");
 const profileAddButton = document.querySelector(".profile__add-btn");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
+const profileAvatar = document.querySelector(".profile__avatar");
 
 // Update profile info on page from user data
 function updateUserInfo(user) {
@@ -48,7 +50,6 @@ const avatarModal = document.querySelector("#avatar-modal");
 const avatarForm = document.querySelector("#edit-avatar-form");
 const avatarInput = avatarModal.querySelector("#profile-avatar-input");
 const avatarModalBtn = document.querySelector(".profile__avatar-btn");
-const profileAvatar = document.querySelector(".profile__avatar");
 
 // Delete modal and form for confirming card deletion
 const deleteModal = document.querySelector("#delete-modal");
@@ -103,9 +104,9 @@ let selectedCard, selectedCardID;
 
 // Modal keyboard close handler (Esc key)
 function handleEsc(event) {
-  const openedModal = document.querySelector(".modal.modal_opened");
-  if (event.key === "Escape" && openedModal) {
-    closeModal(openedModal);
+  if (event.key === "Escape") {
+    const openedModal = document.querySelector(".modal.modal_opened");
+    openedModal && closeModal(openedModal);
   }
 }
 
@@ -212,6 +213,9 @@ function getCardElement(data) {
   cardTitleElement.textContent = data.name;
 
   const cardLikeBtnElement = cardElement.querySelector(".card__like-btn");
+  if (data.isLiked) {
+    cardLikeBtnElement.classList.add("card__like-btn_active");
+  }
 
   cardLikeBtnElement.addEventListener(
     "click",
@@ -256,6 +260,14 @@ document.querySelectorAll(".modal__close-btn").forEach((btn) => {
 
 // Open add new card modal
 profileAddButton.addEventListener("click", () => {
+  addFormElement.reset();
+  resetValidation(addFormElement, settings);
+
+  const submitButton = addFormElement.querySelector(
+    settings.submitButtonSelector
+  );
+  disableButton(submitButton, settings);
+
   openModal(addModal);
 });
 
@@ -308,6 +320,10 @@ addFormElement.addEventListener("submit", function (evt) {
     .then((cardData) => {
       renderCard(cardData, "prepend");
       addFormElement.reset();
+
+      const submitButton = evt.submitter;
+      disableButton(submitButton, settings);
+
       closeModal(addModal);
     })
     .catch(console.error)
