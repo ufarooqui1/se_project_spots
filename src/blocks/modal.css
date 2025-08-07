@@ -325,7 +325,7 @@
 }
 
 .modal__close-btn_type_delete {
-  top: -40px;
+  top: auto;
 }
 
 @media screen and (max-width: 627px) {
